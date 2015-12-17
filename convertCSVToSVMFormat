@@ -1,0 +1,21 @@
+/*
+Author: Ajay Sadhu
+License: Anybody can use and share
+Description: If you have a csv file, when you want to convert to SVMFormat
+i.e, label index:value index:value index:value .....
+5 1:20 3:45 10:8
+It means label is 5 and the above record has value 20 at index 1 , value of 45 at position 3 and value 8 at position 10.
+This compresses the data very well.
+indexes other than mentioned is considered to have zero value.
+No place for negative number  :D
+*/
+
+
+val convertToSVMFormat = data.map { line =>
+val parts = line.split(",");
+var result = parts(0);
+for( index <- 1 to parts.length-1){
+if(parts(index).toDouble >0) {result = result +" "+ index+":"+parts(index)}
+}
+(result)
+}
